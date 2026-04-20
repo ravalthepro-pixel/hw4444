@@ -1,0 +1,19 @@
+from groq import Groq
+
+client = Groq(api_key="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")
+
+def ask(prompt):
+    response = client.chat.completions.create(
+        model="llama-3.1-8b-instant",
+        messages=[{"role": "user", "content": prompt}]
+    )
+    return response.choices[0].message.content
+
+print("=== Question 1 ===")
+print(ask("What is machine learning? Answer in 2 sentences."))
+
+print("\n=== Question 2 ===")
+print(ask("Give me 3 real world examples of machine learning."))
+
+print("\n=== Question 3 ===")
+print(ask("What is the difference between supervised and unsupervised learning?"))
